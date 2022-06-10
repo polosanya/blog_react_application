@@ -15,7 +15,7 @@ export default function App() {
     login: '',
     password: '',
   }]);
-
+  const [opened, setOpened] = useLocalStorage('opened', true);
   const goToLogin = () => {
     navigate('/login');
   };
@@ -25,7 +25,13 @@ export default function App() {
   };
 
   const goToDashboard = () => {
-    navigate('/dashboard');
+    if (opened) {
+      navigate('/');
+      setOpened(!opened);
+    } else {
+      navigate('/dashboard');
+      setOpened(!opened);
+    }
   };
 
   return (

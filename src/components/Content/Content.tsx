@@ -33,15 +33,13 @@ export default function Content({ item }: Props) {
   };
 
   const deleteItem = () => {
-    const newData = [...data];
+    const newData = [...data].filter((i) => i.id !== id);
 
-    newData.splice(id - 1, 1);
+    newData.map((newItem, index) => {
+      const changedItem = { ...newItem };
+      changedItem.id = index + 1;
 
-    newData.map((newItem) => {
-      // eslint-disable-next-line no-param-reassign
-      newItem.id = newData.indexOf(newItem) + 1;
-
-      return newItem;
+      return changedItem;
     });
 
     setData(newData);

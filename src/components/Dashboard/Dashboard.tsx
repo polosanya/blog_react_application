@@ -25,7 +25,7 @@ export default function Dashboard() {
   return (
     <div>
       {data.map((item) => (
-        <Content item={item} />
+        <Content item={item} key={item.id} />
       ))}
 
       <Button
